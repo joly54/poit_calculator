@@ -14,7 +14,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 db = SQLAlchemy(app)
-admin = Admin(app, template_mode='bootstrap4', name='Points')
+admin = Admin(app, template_mode='bootstrap4', name='Points', url='/rating')
 
 
 class Student(db.Model):
