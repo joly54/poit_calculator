@@ -108,7 +108,6 @@ class admin_base_view(ModelView):
         return current_user.is_authenticated and current_user.is_admin
 
 
-
 class students_base_view(ModelView):
     def is_accessible(self):
         return current_user.is_anonymous or not current_user.is_admin
@@ -179,6 +178,7 @@ class recalculate(BaseView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.is_admin
 
+
 class student_view_st(students_base_view):
     column_list = (
         'rating',
@@ -221,10 +221,21 @@ class student_view_st(students_base_view):
         'rating': rating
     }
 
+
 class credits_view_st(students_base_view):
     column_list = ('name', 'credits')
     column_labels = dict(name='Назва',
                          credits='Кількість кредитів')
+
+
+class LogoutView(BaseView):
+    @expose('/')
+    def index(self):
+        logout_user()
+        return redirect(url_for('index'))
+
+    def is_accessible(self):
+        return current_user.is_authenticated
 
 
 
@@ -233,6 +244,8 @@ admin.add_view(credits_view(credits, db.session))
 admin.add_view(student_view_st(Student, db.session, endpoint='student_ro'))
 admin.add_view(credits_view_st(credits, db.session, endpoint='credits_ro'))
 admin.add_view(recalculate(name='Перерахувати', endpoint='recalculate'))
+admin.add_view(LogoutView(name='Вийти', endpoint='logout'))
+
 
 
 @app.route('/fill_credits')
@@ -334,6 +347,7 @@ def index():
         okit=current_user.okit,
         kursova=current_user.kursova,
     )
+
 
 @app.route('/set_admin')
 def set_admin():
