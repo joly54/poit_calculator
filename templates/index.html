@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Бали за предмети</title>
+    <style>
+        body {
+            background-color: #f4f8fb;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 400px;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .form-group input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #3f51b5;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .form-group .button {
+            text-decoration: none;
+            width: 100%;
+            padding: 10px;
+            background-color: #3f51b5;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #303f9f;
+        }
+
+        .form-group .button a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .form-group .button a:hover {
+            text-decoration: underline;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #303f9f;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>{{ username }}, ви займаєте {{ position }} місце в рейтингу, бажаєте оновити результати?</h2>
+    <form action="/" method="post">
+        <div class="form-group">
+            <label for="ktp">КТП</label>
+            <input type="number" id="ktp" name="ktp" value="{{ ktp }}" placeholder="Оцінка з КТП">
+        </div>
+        <div class="form-group">
+            <label for="math">Математика</label>
+            <input type="number" id="math" name="math" value="{{ math }}" placeholder="Введіть ваші бали з математики">
+        </div>
+        <div class="form-group">
+            <label for="physics">Фізика</label>
+            <input type="number" id="physics" name="physics" value="{{ physics }}"
+                   placeholder="Введіть ваші бали з фізики">
+        </div>
+        <div class="form-group">
+            <label for="web_technology">Веб-технології</label>
+            <input type="number" id="web_technology" value="{{ web_technology }}" name="web_technology"
+                   placeholder="Введіть ваші бали з веб-технологій">
+        </div>
+        <div class="form-group">
+            <label for="okit">ОКІТ</label>
+            <input type="number" id="okit" name="okit" value="{{ okit }}" placeholder="Введіть ваші бали з ОКІТ">
+        </div>
+        <div class="form-group">
+            <label for="kursova">Курсова</label>
+            <input type="number" id="kursova" name="kursova" placeholder="Введіть ваші бали за курсову роботу">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Відправити">
+        </div>
+        <div class="form-group">
+            <a href="/admin" class="button">Подивитися рейтинг</a>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
